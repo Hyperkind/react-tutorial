@@ -17,12 +17,21 @@ var CommentBox = React.createClass({
   }
 });
 
+var comments = [
+  { id: 1, author: "Jon", text: "React is swell!" },
+  { id: 2, author: "Timmy", text: "*Timmah!*"}
+];
+
 var CommentList = React.createClass({
   render: function() {
+    var commentNodes = comments.map(function(comment, index) {
+      return (
+        <Comment key={index} author={comment.author}>{comment.text}</Comment>
+      );
+    })
     return(
       <div className="commentList">
-        <Comment author="Jon">React is swell!</Comment>
-        <Comment author="Timmy">*Timmah!*</Comment>
+        {commentNodes}
       </div>
     )
   }
